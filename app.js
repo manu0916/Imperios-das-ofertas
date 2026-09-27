@@ -3,34 +3,30 @@ const products = [];
 
 const infoPages = {
   sobre: {
-    eyebrow: "Quem somos",
-    title: "Moda boa deve fazer sentido.",
+    eyebrow: "Império das Ofertas",
+    title: "Compra segura. Atendimento próximo.",
     body: `
-      <p>A Império das Ofertas nasceu para aproximar peças atuais de quem busca se vestir bem sem complicar a rotina nem o orçamento.</p>
-      <p>Nossa curadoria valoriza caimento, versatilidade e preço justo. Cada coleção é pensada para combinar entre si e render mais possibilidades no dia a dia.</p>
-      <h3>Atendimento de verdade</h3>
-      <p>Da escolha do tamanho ao pós-compra, a proposta é oferecer informação clara e apoio em cada etapa.</p>`,
+      <p>A Império das Ofertas trabalha com roupas para o dia a dia e atendimento especializado em cada etapa da compra.</p>
+      <p>Consulte as informações de entrega, pagamento e troca antes de concluir seu pedido.</p>`,
   },
   entrega: {
     eyebrow: "Informações",
     title: "Entregas e prazos",
     body: `
-      <p>Entregamos para todo o Brasil. O prazo e o valor do frete são calculados no checkout conforme o CEP informado.</p>
-      <h3>Frete grátis</h3><p>Pedidos acima de R$ 199 recebem frete grátis na modalidade econômica.</p>
-      <h3>Acompanhamento</h3><p>Após a confirmação, o cliente recebe atualizações do pedido até a entrega.</p>`,
+      <p>As opções, os custos e os prazos de entrega devem ser confirmados no momento do pedido, conforme o endereço informado.</p>
+      <p>O atendimento da loja pode esclarecer dúvidas sobre o envio.</p>`,
   },
   trocas: {
-    eyebrow: "Compra tranquila",
+    eyebrow: "Informações",
     title: "Trocas e devoluções",
     body: `
-      <p>A primeira troca é gratuita e pode ser solicitada em até 30 dias corridos após o recebimento.</p>
-      <p>A peça deve estar sem sinais de uso, com etiquetas e embalagem original. Em caso de arrependimento, a devolução pode ser solicitada em até 7 dias corridos.</p>`,
+      <p>Consulte com a loja as condições e os prazos para troca ou devolução antes de concluir a compra.</p>`,
   },
   pagamento: {
     eyebrow: "Pagamento",
     title: "Escolha como pagar",
     body: `
-      <p>O checkout foi pensado para aceitar Pix, boleto e cartões de crédito em até 6x sem juros.</p>
+      <p>Confirme com a loja as formas de pagamento disponíveis e as condições antes de concluir o pedido.</p>
       <p><strong>Importante:</strong> este site é um protótipo front-end. Nenhuma cobrança ou transação real é realizada nesta versão.</p>`,
   },
   privacidade: {
@@ -67,7 +63,6 @@ const infoPages = {
 
 const state = {
   cart: loadCart(),
-  coupon: "",
   quickProductId: null,
   selectedSize: null,
 };
@@ -102,8 +97,8 @@ function saveCart() {
   }
 }
 
-function productImage(product, className = "sprite") {
-  return `<img class="${className}" src="catalog-sprite.webp" alt="${product.name}" style="--x:${product.position[0]};--y:${product.position[1]}" />`;
+function productImage(product, className = "product-photo") {
+  return `<img class="${className}" src="${product.image}" alt="${product.name}" />`;
 }
 
 function renderProducts() {
@@ -120,7 +115,6 @@ function renderProducts() {
             <p class="product-category">${capitalize(product.category)}</p>
             <h3 class="product-name">${product.name}</h3>
             <p class="product-price">${money.format(product.price)}</p>
-            <p class="product-installments">ou 3x de ${money.format(product.price / 3)} sem juros</p>
           </div>
         </article>`,
     )
@@ -145,7 +139,6 @@ function openProduct(productId) {
       <p class="eyebrow">${capitalize(product.category)} · ${product.badge}</p>
       <h2>${product.name}</h2>
       <p class="quick-price">${money.format(product.price)}</p>
-      <p class="quick-installments">3x de ${money.format(product.price / 3)} sem juros</p>
       <p class="quick-description">${product.description}</p>
       <div class="size-heading"><span>Escolha o tamanho</span><button type="button" data-info="tamanhos">Ver medidas</button></div>
       <div class="size-options" role="group" aria-label="Escolha o tamanho">
@@ -153,7 +146,7 @@ function openProduct(productId) {
       </div>
       <p class="size-feedback" id="sizeFeedback" aria-live="polite"></p>
       <button class="button button-gold button-full" type="button" id="addToCart">Adicionar à sacola</button>
-      <div class="quick-features"><span>✓ Primeira troca grátis</span><span>✓ Frete grátis acima de R$ 199</span><span>Composição: ${product.composition}</span></div>
+      <div class="quick-features"><span>Compra segura</span><span>Atendimento especializado</span><span>Composição: ${product.composition}</span></div>
     </div>`;
   productModal.showModal();
   document.body.classList.add("is-locked");
@@ -195,12 +188,8 @@ function cartSubtotal() {
   return cartDetails().reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 }
 
-function discountAmount() {
-  return state.coupon === "IMPERIO10" ? cartSubtotal() * 0.1 : 0;
-}
-
 function cartTotal() {
-  return Math.max(0, cartSubtotal() - discountAmount());
+  return cartSubtotal();
 }
 
 function updateCart() {
@@ -236,14 +225,6 @@ function updateCart() {
   $("#cartSummary").hidden = !hasItems;
   $("#cartSubtotal").textContent = money.format(cartSubtotal());
   $("#cartTotal").textContent = money.format(cartTotal());
-  $("#discountValue").textContent = `− ${money.format(discountAmount())}`;
-  $("#discountLine").hidden = !discountAmount();
-
-  const remaining = Math.max(0, 199 - cartSubtotal());
-  const progress = Math.min(100, (cartSubtotal() / 199) * 100);
-  $("#shippingProgress").style.width = `${progress}%`;
-  $("#shippingMessage").textContent = remaining > 0 ? `Faltam ${money.format(remaining)} para o frete grátis` : "Você ganhou frete grátis";
-  $("#shippingValue").textContent = remaining > 0 ? money.format(199) : "✓";
 }
 
 function changeQuantity(key, delta) {
@@ -309,14 +290,13 @@ function validateCheckoutStep(step) {
 function renderCheckoutReview() {
   const form = $("#checkoutForm");
   const data = new FormData(form);
-  const paymentNames = { pix: "Pix", card: "Cartão em até 6x", boleto: "Boleto" };
+  const paymentNames = { pix: "Pix", card: "Cartão", boleto: "Boleto" };
   const itemLabel = cartDetails().reduce((sum, item) => sum + item.quantity, 0);
   $("#checkoutReview").innerHTML = `
     <div class="review-line"><span>Itens</span><strong>${itemLabel}</strong></div>
-    <div class="review-line"><span>Entrega</span><strong>${cartSubtotal() >= 199 ? "Grátis" : "Calculada após a demonstração"}</strong></div>
+    <div class="review-line"><span>Entrega</span><strong>Conforme endereço</strong></div>
     <div class="review-line"><span>Pagamento</span><strong>${paymentNames[data.get("payment")]}</strong></div>
     <div class="review-line"><span>Enviar para</span><strong>${data.get("city") || "Endereço informado"}</strong></div>
-    ${discountAmount() ? `<div class="review-line"><span>Cupom IMPERIO10</span><strong>− ${money.format(discountAmount())}</strong></div>` : ""}
     <div class="review-line review-total"><strong>Total</strong><strong>${money.format(cartTotal())}</strong></div>`;
 }
 
@@ -387,25 +367,6 @@ $("#continueShopping").addEventListener("click", closeCart);
 pageOverlay.addEventListener("click", closeCart);
 $("#checkoutButton").addEventListener("click", openCheckout);
 
-$("#couponForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const code = $("#couponInput").value.trim().toUpperCase();
-  if (code === "IMPERIO10") {
-    state.coupon = code;
-    $("#couponFeedback").textContent = "Cupom aplicado: 10% de desconto.";
-  } else {
-    state.coupon = "";
-    $("#couponFeedback").textContent = code ? "Cupom inválido. Tente IMPERIO10." : "Digite um cupom para aplicar.";
-  }
-  updateCart();
-});
-
-$("#newsletterForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-  showToast("Cadastro demonstrativo concluído. Boas-vindas ao Império!");
-  event.currentTarget.reset();
-});
-
 $("#checkoutForm").addEventListener("submit", (event) => {
   event.preventDefault();
   if (!event.currentTarget.checkValidity()) {
@@ -417,7 +378,6 @@ $("#checkoutForm").addEventListener("submit", (event) => {
   event.currentTarget.hidden = true;
   $("#orderSuccess").hidden = false;
   state.cart = [];
-  state.coupon = "";
   saveCart();
   updateCart();
 });
