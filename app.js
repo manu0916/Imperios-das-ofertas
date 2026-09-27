@@ -1,65 +1,5 @@
-const products = [
-  {
-    id: "camiseta-orbita",
-    name: "Camiseta Órbita Oversized",
-    category: "unissex",
-    price: 69.9,
-    badge: "Novo",
-    position: ["0%", "0%"],
-    description: "Malha encorpada, toque macio e modelagem ampla para um visual limpo que funciona em qualquer combinação.",
-    composition: "100% algodão",
-  },
-  {
-    id: "vestido-aurora",
-    name: "Vestido Aurora Midi",
-    category: "feminino",
-    price: 119.9,
-    badge: "Mais vendido",
-    position: ["-33.3333%", "0%"],
-    description: "Cintura marcada na medida e caimento leve. Uma peça prática para sair do dia para a noite sem esforço.",
-    composition: "Viscose com elastano",
-  },
-  {
-    id: "calca-nomade",
-    name: "Calça Nômade Cargo",
-    category: "unissex",
-    price: 139.9,
-    badge: "Edição limitada",
-    position: ["-66.6667%", "0%"],
-    description: "Modelagem reta, bolsos utilitários e tecido resistente com movimento. Feita para acompanhar rotinas intensas.",
-    composition: "Sarja 100% algodão",
-  },
-  {
-    id: "jaqueta-horizonte",
-    name: "Jaqueta Horizonte Jeans",
-    category: "masculino",
-    price: 179.9,
-    badge: "Últimas unidades",
-    position: ["0%", "-50%"],
-    description: "Jeans escuro com construção clássica e acabamento versátil. A terceira peça que resolve o look em segundos.",
-    composition: "Denim 100% algodão",
-  },
-  {
-    id: "short-linha",
-    name: "Short Linha Alfaiataria",
-    category: "feminino",
-    price: 89.9,
-    badge: "−15%",
-    position: ["-33.3333%", "-50%"],
-    description: "Cintura alta, pregas frontais e estrutura suave. Elegante sem perder a leveza dos dias quentes.",
-    composition: "Linho misto",
-  },
-  {
-    id: "tricot-lume",
-    name: "Blusa Lume Tricot",
-    category: "feminino",
-    price: 99.9,
-    badge: "Favorito",
-    position: ["-66.6667%", "-50%"],
-    description: "Trama delicada, textura macia e comprimento equilibrado. Uma base clara para sobreposições e looks tonais.",
-    composition: "Tricot de viscose",
-  },
-];
+// Product listings are intentionally empty until the store supplies its real collection.
+const products = [];
 
 const infoPages = {
   sobre: {
@@ -126,9 +66,6 @@ const infoPages = {
 };
 
 const state = {
-  activeFilter: "todos",
-  search: "",
-  sort: "destaques",
   cart: loadCart(),
   coupon: "",
   quickProductId: null,
@@ -140,8 +77,7 @@ const $ = (selector, context = document) => context.querySelector(selector);
 const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
 
 const productGrid = $("#productGrid");
-const resultsCount = $("#resultsCount");
-const emptyState = $("#emptyState");
+const collectionEmpty = $("#collectionEmpty");
 const cartDrawer = $("#cartDrawer");
 const pageOverlay = $("#pageOverlay");
 const productModal = $("#productModal");
@@ -152,7 +88,7 @@ const toast = $("#toast");
 function loadCart() {
   try {
     const parsed = JSON.parse(localStorage.getItem("imperio-cart") || "[]");
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.filter((item) => products.some((product) => product.id === item.productId)) : [];
   } catch {
     return [];
   }
@@ -171,17 +107,7 @@ function productImage(product, className = "sprite") {
 }
 
 function renderProducts() {
-  const term = state.search.trim().toLocaleLowerCase("pt-BR");
-  let visible = products.filter((product) => {
-    const matchesFilter = state.activeFilter === "todos" || product.category === state.activeFilter;
-    const haystack = `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("pt-BR");
-    return matchesFilter && (!term || haystack.includes(term));
-  });
-
-  if (state.sort === "menor") visible.sort((a, b) => a.price - b.price);
-  if (state.sort === "maior") visible.sort((a, b) => b.price - a.price);
-
-  productGrid.innerHTML = visible
+  productGrid.innerHTML = products
     .map(
       (product) => `
         <article class="product-card">
@@ -200,23 +126,12 @@ function renderProducts() {
     )
     .join("");
 
-  resultsCount.textContent = `${visible.length} ${visible.length === 1 ? "produto encontrado" : "produtos encontrados"}`;
-  emptyState.hidden = visible.length !== 0;
-  productGrid.hidden = visible.length === 0;
+  collectionEmpty.hidden = products.length !== 0;
+  productGrid.hidden = products.length === 0;
 }
 
 function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-function setFilter(filter) {
-  state.activeFilter = filter;
-  $$(".filter-pill").forEach((button) => {
-    const active = button.dataset.filter === filter;
-    button.classList.toggle("is-active", active);
-    button.setAttribute("aria-pressed", String(active));
-  });
-  renderProducts();
 }
 
 function openProduct(productId) {
@@ -460,45 +375,6 @@ document.addEventListener("click", (event) => {
   if (target.matches("[data-prev-step]")) setCheckoutStep(Number(target.dataset.prevStep));
 });
 
-$$(".filter-pill").forEach((button) => button.addEventListener("click", () => setFilter(button.dataset.filter)));
-
-$("#sortSelect").addEventListener("change", (event) => {
-  state.sort = event.target.value;
-  renderProducts();
-});
-
-$("#searchToggle").addEventListener("click", () => {
-  const search = $("#headerSearch");
-  search.classList.toggle("is-open");
-  if (search.classList.contains("is-open")) $("#searchInput").focus();
-});
-
-$("#searchInput").addEventListener("input", (event) => {
-  state.search = event.target.value;
-  renderProducts();
-  if (state.search && !isElementInViewport($("#catalogo"))) $("#catalogo").scrollIntoView({ behavior: "smooth" });
-});
-
-$("#clearSearch").addEventListener("click", () => {
-  $("#searchInput").value = "";
-  state.search = "";
-  renderProducts();
-  $("#searchInput").focus();
-});
-
-$("#showAllButton").addEventListener("click", () => {
-  $("#searchInput").value = "";
-  state.search = "";
-  setFilter("todos");
-});
-
-$$("[data-filter-link]").forEach((link) =>
-  link.addEventListener("click", () => {
-    setFilter(link.dataset.filterLink);
-    $("#mainNav").classList.remove("is-open");
-  }),
-);
-
 $("#menuButton").addEventListener("click", () => {
   const nav = $("#mainNav");
   const open = nav.classList.toggle("is-open");
@@ -566,11 +442,6 @@ $$('dialog').forEach((dialog) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && cartDrawer.classList.contains("is-open")) closeCart();
 });
-
-function isElementInViewport(element) {
-  const rect = element.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-}
 
 renderProducts();
 updateCart();

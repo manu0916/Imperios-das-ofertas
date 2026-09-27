@@ -3,29 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111010" />
+    <meta name="theme-color" content="#141217" />
     <meta
       name="description"
-      content="Império das Ofertas — moda atual, preço justo e uma experiência de compra simples do início ao fim."
+      content="Império das Ofertas — moda urbana com personalidade, uma vitrine para vestir no seu próprio ritmo."
     />
-    <title>Império das Ofertas | Moda que cabe na vida real</title>
+    <title>Império das Ofertas | Vista seu próprio ritmo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111010'/%3E%3Cpath d='M15 45V19h8v26zm13 0V19h8v26zm-9-8h13v8H19zm24 8-7-13 7-13h8l-7 13 7 13z' fill='%23d7aa62'/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141217'/%3E%3Cpath d='M15 45V19h8v26zm13 0V19h8v26zm-9-8h13v8H19zm24 8-7-13 7-13h8l-7 13 7 13z' fill='%23ed70c5'/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#catalogo">Ir para os produtos</a>
+    <a class="skip-link" href="#catalogo">Ir para a coleção</a>
 
     <div class="announcement">
-      <p><strong>Frete grátis</strong> em compras acima de R$ 199</p>
+      <p><strong>Estilo de rua</strong> no seu próprio ritmo</p>
       <span aria-hidden="true"></span>
-      <p>Primeira troca grátis em até 30 dias</p>
+      <p>Streetwear com influência do funk</p>
     </div>
 
     <header class="site-header" id="inicio">
@@ -40,17 +40,13 @@
         </a>
 
         <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
-          <a href="#novidades">Novidades</a>
-          <a href="#catalogo" data-filter-link="feminino">Feminino</a>
-          <a href="#catalogo" data-filter-link="masculino">Masculino</a>
-          <a href="#ofertas">Ofertas</a>
+          <a href="#catalogo">Coleção</a>
+          <a href="#ritmo">No seu ritmo</a>
+          <a href="#beneficios">A loja</a>
           <button class="nav-info" data-info="sobre">Nossa loja</button>
         </nav>
 
         <div class="header-actions">
-          <button class="icon-button search-toggle" id="searchToggle" aria-label="Buscar produtos">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
-          </button>
           <button class="cart-button" id="cartButton" aria-label="Abrir sacola, 0 itens">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 9V6a3 3 0 0 1 6 0v3" /></svg>
             <span class="cart-label">Sacola</span>
@@ -59,27 +55,19 @@
         </div>
       </div>
 
-      <form class="header-search" id="headerSearch" role="search">
-        <label for="searchInput">O que você procura?</label>
-        <div class="search-field">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
-          <input id="searchInput" type="search" placeholder="Busque por peça, cor ou categoria" autocomplete="off" />
-          <button type="button" id="clearSearch" aria-label="Limpar busca">Limpar</button>
-        </div>
-      </form>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="heroTitle">
-        <img class="hero-image" src="hero-fashion.webp" alt="Três pessoas vestindo looks casuais em um estúdio escuro" />
+        <img class="hero-image" src="hero-funk-campaign.webp" alt="Três modelos com moda urbana em um cenário noturno de cidade" />
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">Nova coleção · 2026</p>
-          <h1 id="heroTitle">Vista sua presença.</h1>
-          <p>Peças atuais, combinações fáceis e preços pensados para a vida real.</p>
+          <p class="eyebrow">Império das Ofertas · moda urbana com influência do funk</p>
+          <h1 id="heroTitle">Vista seu próprio ritmo.</h1>
+          <p>Rua, música e atitude — com espaço para você colocar sua identidade.</p>
           <div class="hero-actions">
-            <a class="button button-gold" href="#catalogo">Comprar novidades</a>
-            <a class="button button-ghost" href="#ofertas">Ver ofertas</a>
+            <a class="button button-gold" href="#catalogo">Conhecer a coleção</a>
+            <button class="button button-ghost" data-info="sobre">Sobre a loja</button>
           </div>
         </div>
         <a class="hero-scroll" href="#beneficios" aria-label="Conhecer benefícios da loja">
@@ -104,58 +92,43 @@
       </section>
 
       <section class="catalog-section" id="catalogo" aria-labelledby="catalogTitle">
-        <div class="section-heading" id="novidades">
+        <div class="section-heading">
           <div>
-            <p class="eyebrow">Escolhas da semana</p>
-            <h2 id="catalogTitle">Peças para repetir sem cansar</h2>
+            <p class="eyebrow">A próxima coleção começa aqui</p>
+            <h2 id="catalogTitle">Uma vitrine com a cara da loja.</h2>
           </div>
-          <p>Um guarda-roupa versátil começa por peças que conversam entre si.</p>
+          <p>O catálogo de demonstração foi retirado. Este espaço está pronto para receber as peças reais, com fotos, tamanhos e valores confirmados pela loja.</p>
         </div>
-
-        <div class="catalog-tools">
-          <div class="filter-pills" role="group" aria-label="Filtrar produtos">
-            <button class="filter-pill is-active" data-filter="todos" aria-pressed="true">Todos</button>
-            <button class="filter-pill" data-filter="feminino" aria-pressed="false">Feminino</button>
-            <button class="filter-pill" data-filter="masculino" aria-pressed="false">Masculino</button>
-            <button class="filter-pill" data-filter="unissex" aria-pressed="false">Unissex</button>
+        <div class="collection-state" id="collectionEmpty">
+          <p class="collection-index">IO <span>—</span> 01</p>
+          <div>
+            <p class="eyebrow">Vitrine em preparação</p>
+            <h3>Sem peças inventadas.<br /><em>Só o que é da loja.</em></h3>
+            <p>Assim que os produtos reais forem cadastrados, a compra acontece por aqui — da escolha do tamanho ao checkout.</p>
           </div>
-          <label class="sort-label" for="sortSelect">
-            Ordenar
-            <select id="sortSelect">
-              <option value="destaques">Destaques</option>
-              <option value="menor">Menor preço</option>
-              <option value="maior">Maior preço</option>
-            </select>
-          </label>
+          <a class="button button-dark" href="#ritmo">Ver o conceito da coleção</a>
         </div>
-
-        <p class="results-count" id="resultsCount" aria-live="polite"></p>
-        <div class="product-grid" id="productGrid"></div>
-        <div class="empty-state" id="emptyState" hidden>
-          <span>Não encontramos essa peça.</span>
-          <p>Tente outro termo ou veja toda a coleção.</p>
-          <button class="button button-dark" id="showAllButton">Ver todos os produtos</button>
-        </div>
+        <div class="product-grid" id="productGrid" hidden></div>
       </section>
 
-      <section class="offer-banner" id="ofertas" aria-labelledby="offerTitle">
+      <section class="offer-banner" id="ritmo" aria-labelledby="offerTitle">
         <div class="offer-copy">
-          <p class="eyebrow">Oferta de boas-vindas</p>
-          <h2 id="offerTitle">Seu primeiro look começa com 10% OFF.</h2>
-          <p>Use o cupom <strong>IMPERIO10</strong> na sacola. Válido para os produtos desta seleção.</p>
-          <a class="button button-cream" href="#catalogo">Escolher minhas peças</a>
+          <p class="eyebrow">Do corre à noite</p>
+          <h2 id="offerTitle">A cidade não tem dress code.</h2>
+          <p>Moda urbana pra acompanhar seu ritmo e deixar cada combinação com a sua identidade.</p>
+          <a class="button button-cream" href="#catalogo">Conhecer a loja</a>
         </div>
-        <div class="offer-seal" aria-label="10 por cento de desconto">
-          <span>−10%</span>
-          <small>primeira compra</small>
+        <div class="offer-seal" aria-label="No seu próprio ritmo">
+          <span>IO</span>
+          <small>no seu ritmo</small>
         </div>
       </section>
 
       <section class="style-note" aria-labelledby="styleTitle">
-        <p class="eyebrow">Compra sem dúvida</p>
-        <h2 id="styleTitle">A escolha certa, no tamanho certo.</h2>
-        <p>Confira medidas, composição e cuidados em cada produto. Se ainda não servir como esperava, a primeira troca é por nossa conta.</p>
-        <button class="text-link" data-info="tamanhos">Consultar guia de tamanhos <span aria-hidden="true">→</span></button>
+        <p class="eyebrow">Império das Ofertas</p>
+        <h2 id="styleTitle">Estilo próprio não sai de moda.</h2>
+        <p>A loja online foi pensada para apresentar a coleção com personalidade e deixar o caminho da compra simples, do primeiro clique ao pedido.</p>
+        <a class="text-link" href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
       </section>
     </main>
 
@@ -211,8 +184,8 @@
       <div class="cart-empty" id="cartEmpty">
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 9V6a3 3 0 0 1 6 0v3" /></svg>
         <h3>Sua sacola está vazia</h3>
-        <p>Escolha uma peça para começar.</p>
-        <button class="button button-dark" id="continueShopping">Ver produtos</button>
+        <p>A sacola será liberada quando a coleção real entrar na vitrine.</p>
+        <button class="button button-dark" id="continueShopping">Voltar à página</button>
       </div>
       <div class="cart-summary" id="cartSummary" hidden>
         <form class="coupon-row" id="couponForm">

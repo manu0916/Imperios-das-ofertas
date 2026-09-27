@@ -1,6 +1,8 @@
 # Império das Ofertas
 
-Loja virtual demonstrativa criada em HTML, CSS e JavaScript puro. O projeto é totalmente front-end e inclui catálogo, busca, filtros, detalhes de produto, escolha de tamanho, sacola persistente, cupom e checkout demonstrativo em três etapas.
+Vitrine front-end da Império das Ofertas, criada em HTML, CSS e JavaScript puro. A direção visual mistura moda urbana e referências sutis ao funk: fotografia editorial noturna, tons de ameixa e acentos magenta.
+
+O catálogo ilustrativo foi removido. A vitrine permanece vazia até que a loja forneça os produtos reais, com fotos, tamanhos, preços e descrições confirmados. O fluxo de sacola e checkout está preparado no front-end, mas não realiza cobranças nem envia pedidos.
 
 ## Publicar no Cloudflare Pages
 
@@ -14,5 +16,4 @@ Não são necessárias variáveis de ambiente.
 
 ## Observação
 
-Os produtos, preços e pedidos são demonstrativos. Antes de colocar a loja em produção, conecte o front-end ao estoque, pagamento, frete e banco de dados reais.
-
+Antes de colocar a loja em produção, cadastre a coleção real e conecte estoque, pagamento, frete e pedidos. Revise também as políticas comerciais exibidas no site para refletir as condições efetivas da loja.
