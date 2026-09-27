@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111010" />
+    <meta
+      name="description"
+      content="Império das Ofertas — moda atual, preço justo e uma experiência de compra simples do início ao fim."
+    />
+    <title>Império das Ofertas | Moda que cabe na vida real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111010'/%3E%3Cpath d='M15 45V19h8v26zm13 0V19h8v26zm-9-8h13v8H19zm24 8-7-13 7-13h8l-7 13 7 13z' fill='%23d7aa62'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalogo">Ir para os produtos</a>
+
+    <div class="announcement">
+      <p><strong>Frete grátis</strong> em compras acima de R$ 199</p>
+      <span aria-hidden="true"></span>
+      <p>Primeira troca grátis em até 30 dias</p>
+    </div>
+
+    <header class="site-header" id="inicio">
+      <div class="header-inner">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+
+        <a class="brand" href="#inicio" aria-label="Império das Ofertas, início">
+          <span class="brand-mark" aria-hidden="true">IO</span>
+          <span class="brand-name">Império <small>das ofertas</small></span>
+        </a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+          <a href="#novidades">Novidades</a>
+          <a href="#catalogo" data-filter-link="feminino">Feminino</a>
+          <a href="#catalogo" data-filter-link="masculino">Masculino</a>
+          <a href="#ofertas">Ofertas</a>
+          <button class="nav-info" data-info="sobre">Nossa loja</button>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-button search-toggle" id="searchToggle" aria-label="Buscar produtos">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+          </button>
+          <button class="cart-button" id="cartButton" aria-label="Abrir sacola, 0 itens">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 9V6a3 3 0 0 1 6 0v3" /></svg>
+            <span class="cart-label">Sacola</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+
+      <form class="header-search" id="headerSearch" role="search">
+        <label for="searchInput">O que você procura?</label>
+        <div class="search-field">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+          <input id="searchInput" type="search" placeholder="Busque por peça, cor ou categoria" autocomplete="off" />
+          <button type="button" id="clearSearch" aria-label="Limpar busca">Limpar</button>
+        </div>
+      </form>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <img class="hero-image" src="hero-fashion.webp" alt="Três pessoas vestindo looks casuais em um estúdio escuro" />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Nova coleção · 2026</p>
+          <h1 id="heroTitle">Vista sua presença.</h1>
+          <p>Peças atuais, combinações fáceis e preços pensados para a vida real.</p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#catalogo">Comprar novidades</a>
+            <a class="button button-ghost" href="#ofertas">Ver ofertas</a>
+          </div>
+        </div>
+        <a class="hero-scroll" href="#beneficios" aria-label="Conhecer benefícios da loja">
+          <span>Descubra</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5" /></svg>
+        </a>
+      </section>
+
+      <section class="benefits" id="beneficios" aria-label="Vantagens da loja">
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z" /><circle cx="7" cy="18" r="2" /><circle cx="18" cy="18" r="2" /></svg>
+          <div><strong>Entrega para todo o Brasil</strong><span>Acompanhe cada etapa do pedido</span></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7" /><path d="M20 4v6h-6" /></svg>
+          <div><strong>Troca simples</strong><span>Até 30 dias após o recebimento</span></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2" /><path d="M3 10h18M7 15h4" /></svg>
+          <div><strong>Pagamento protegido</strong><span>Pix, cartão ou boleto</span></div>
+        </article>
+      </section>
+
+      <section class="catalog-section" id="catalogo" aria-labelledby="catalogTitle">
+        <div class="section-heading" id="novidades">
+          <div>
+            <p class="eyebrow">Escolhas da semana</p>
+            <h2 id="catalogTitle">Peças para repetir sem cansar</h2>
+          </div>
+          <p>Um guarda-roupa versátil começa por peças que conversam entre si.</p>
+        </div>
+
+        <div class="catalog-tools">
+          <div class="filter-pills" role="group" aria-label="Filtrar produtos">
+            <button class="filter-pill is-active" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="filter-pill" data-filter="feminino" aria-pressed="false">Feminino</button>
+            <button class="filter-pill" data-filter="masculino" aria-pressed="false">Masculino</button>
+            <button class="filter-pill" data-filter="unissex" aria-pressed="false">Unissex</button>
+          </div>
+          <label class="sort-label" for="sortSelect">
+            Ordenar
+            <select id="sortSelect">
+              <option value="destaques">Destaques</option>
+              <option value="menor">Menor preço</option>
+              <option value="maior">Maior preço</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="results-count" id="resultsCount" aria-live="polite"></p>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span>Não encontramos essa peça.</span>
+          <p>Tente outro termo ou veja toda a coleção.</p>
+          <button class="button button-dark" id="showAllButton">Ver todos os produtos</button>
+        </div>
+      </section>
+
+      <section class="offer-banner" id="ofertas" aria-labelledby="offerTitle">
+        <div class="offer-copy">
+          <p class="eyebrow">Oferta de boas-vindas</p>
+          <h2 id="offerTitle">Seu primeiro look começa com 10% OFF.</h2>
+          <p>Use o cupom <strong>IMPERIO10</strong> na sacola. Válido para os produtos desta seleção.</p>
+          <a class="button button-cream" href="#catalogo">Escolher minhas peças</a>
+        </div>
+        <div class="offer-seal" aria-label="10 por cento de desconto">
+          <span>−10%</span>
+          <small>primeira compra</small>
+        </div>
+      </section>
+
+      <section class="style-note" aria-labelledby="styleTitle">
+        <p class="eyebrow">Compra sem dúvida</p>
+        <h2 id="styleTitle">A escolha certa, no tamanho certo.</h2>
+        <p>Confira medidas, composição e cuidados em cada produto. Se ainda não servir como esperava, a primeira troca é por nossa conta.</p>
+        <button class="text-link" data-info="tamanhos">Consultar guia de tamanhos <span aria-hidden="true">→</span></button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">IO</span>
+          <span class="brand-name">Império <small>das ofertas</small></span>
+        </a>
+        <p>Moda atual, preço justo e atendimento que acompanha você.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Atendimento</h3>
+        <button data-info="entrega">Entregas e prazos</button>
+        <button data-info="trocas">Trocas e devoluções</button>
+        <button data-info="pagamento">Formas de pagamento</button>
+      </div>
+      <div class="footer-column">
+        <h3>Sobre a loja</h3>
+        <button data-info="sobre">Nossa história</button>
+        <button data-info="privacidade">Privacidade</button>
+        <button data-info="termos">Termos de compra</button>
+      </div>
+      <div class="footer-newsletter">
+        <h3>Entre para a lista</h3>
+        <p>Novidades e condições especiais, sem exagero.</p>
+        <form id="newsletterForm">
+          <label class="sr-only" for="newsletterEmail">Seu melhor e-mail</label>
+          <input id="newsletterEmail" type="email" placeholder="Seu melhor e-mail" required />
+          <button type="submit" aria-label="Cadastrar e-mail">→</button>
+        </form>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Império das Ofertas</span>
+        <span>Ambiente de demonstração · nenhuma cobrança real é realizada</span>
+      </div>
+    </footer>
+
+    <div class="page-overlay" id="pageOverlay" hidden></div>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
+      <div class="drawer-header">
+        <div><p class="eyebrow">Sua seleção</p><h2 id="cartTitle">Sacola</h2></div>
+        <button class="icon-button" id="closeCart" aria-label="Fechar sacola">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="shipping-meter" id="shippingMeter">
+        <div class="meter-copy"><span id="shippingMessage">Adicione produtos para ganhar frete grátis</span><strong id="shippingValue">R$ 199</strong></div>
+        <div class="meter-track"><span id="shippingProgress"></span></div>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 9V6a3 3 0 0 1 6 0v3" /></svg>
+        <h3>Sua sacola está vazia</h3>
+        <p>Escolha uma peça para começar.</p>
+        <button class="button button-dark" id="continueShopping">Ver produtos</button>
+      </div>
+      <div class="cart-summary" id="cartSummary" hidden>
+        <form class="coupon-row" id="couponForm">
+          <label class="sr-only" for="couponInput">Cupom de desconto</label>
+          <input id="couponInput" placeholder="Cupom de desconto" />
+          <button type="submit">Aplicar</button>
+        </form>
+        <p class="coupon-feedback" id="couponFeedback" aria-live="polite"></p>
+        <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">R$ 0,00</span></div>
+        <div class="summary-line discount-line" id="discountLine" hidden><span>Desconto</span><span id="discountValue">− R$ 0,00</span></div>
+        <div class="summary-line total-line"><strong>Total</strong><strong id="cartTotal">R$ 0,00</strong></div>
+        <button class="button button-gold button-full" id="checkoutButton">Ir para o checkout</button>
+        <p class="secure-note"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" /><rect x="5" y="10" width="14" height="11" rx="2" /></svg> Compra protegida e dados criptografados</p>
+      </div>
+    </aside>
+
+    <dialog class="modal product-modal" id="productModal">
+      <button class="modal-close icon-button" data-close-dialog aria-label="Fechar detalhes">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+      <div class="quick-view" id="quickViewContent"></div>
+    </dialog>
+
+    <dialog class="modal info-modal" id="infoModal">
+      <button class="modal-close icon-button" data-close-dialog aria-label="Fechar informações">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+      <article id="infoContent"></article>
+    </dialog>
+
+    <dialog class="modal checkout-modal" id="checkoutModal">
+      <button class="modal-close icon-button" data-close-dialog aria-label="Fechar checkout">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+      <div class="checkout-shell">
+        <div class="checkout-top">
+          <div>
+            <p class="eyebrow">Finalizar pedido</p>
+            <h2>Checkout seguro</h2>
+          </div>
+          <ol class="checkout-steps" aria-label="Etapas do checkout">
+            <li class="is-active" data-step-indicator="1"><span>1</span>Entrega</li>
+            <li data-step-indicator="2"><span>2</span>Pagamento</li>
+            <li data-step-indicator="3"><span>3</span>Confirmar</li>
+          </ol>
+        </div>
+
+        <form id="checkoutForm">
+          <section class="checkout-step is-active" data-checkout-step="1">
+            <h3>Para onde enviamos?</h3>
+            <div class="form-grid">
+              <label class="field field-wide">Nome completo<input name="name" autocomplete="name" required /></label>
+              <label class="field">E-mail<input name="email" type="email" autocomplete="email" required /></label>
+              <label class="field">Telefone<input name="phone" inputmode="tel" placeholder="(00) 00000-0000" required /></label>
+              <label class="field">CEP<input name="postalCode" inputmode="numeric" placeholder="00000-000" required /></label>
+              <label class="field">Cidade<input name="city" required /></label>
+              <label class="field field-wide">Endereço<input name="address" autocomplete="street-address" required /></label>
+              <label class="field">Número<input name="number" inputmode="numeric" required /></label>
+              <label class="field">Complemento<input name="complement" placeholder="Opcional" /></label>
+            </div>
+            <div class="step-actions"><button type="button" class="button button-gold" data-next-step="2">Continuar para pagamento</button></div>
+          </section>
+
+          <section class="checkout-step" data-checkout-step="2">
+            <h3>Como deseja pagar?</h3>
+            <div class="payment-options">
+              <label><input type="radio" name="payment" value="pix" checked /><span><strong>Pix</strong><small>Aprovação imediata</small></span></label>
+              <label><input type="radio" name="payment" value="card" /><span><strong>Cartão</strong><small>Em até 6x sem juros</small></span></label>
+              <label><input type="radio" name="payment" value="boleto" /><span><strong>Boleto</strong><small>Vencimento em 2 dias úteis</small></span></label>
+            </div>
+            <div class="demo-payment-note">Este é um protótipo. Nenhum dado de pagamento real será solicitado ou processado.</div>
+            <div class="step-actions">
+              <button type="button" class="button button-outline" data-prev-step="1">Voltar</button>
+              <button type="button" class="button button-gold" data-next-step="3">Revisar pedido</button>
+            </div>
+          </section>
+
+          <section class="checkout-step" data-checkout-step="3">
+            <h3>Revise antes de confirmar</h3>
+            <div class="checkout-review" id="checkoutReview"></div>
+            <label class="terms-check"><input type="checkbox" name="terms" required /> <span>Li e aceito os termos de compra desta demonstração.</span></label>
+            <div class="step-actions">
+              <button type="button" class="button button-outline" data-prev-step="2">Voltar</button>
+              <button type="submit" class="button button-gold">Confirmar pedido demonstrativo</button>
+            </div>
+          </section>
+        </form>
+
+        <section class="order-success" id="orderSuccess" hidden>
+          <div class="success-icon">✓</div>
+          <p class="eyebrow">Pedido confirmado</p>
+          <h2>Obrigada pela escolha.</h2>
+          <p>O pedido demonstrativo <strong id="orderNumber"></strong> foi criado com sucesso. Em uma loja publicada, o cliente receberia todos os detalhes por e-mail.</p>
+          <button class="button button-dark" id="finishOrder">Continuar comprando</button>
+        </section>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
