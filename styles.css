@@ -1726,7 +1726,6 @@ svg {
   .brand-mark { width: 35px; height: 35px; }
   .brand-name { font-size: 1.05rem; }
   .brand-name small { font-size: 0.5rem; }
-  .search-toggle { display: none; }
   .cart-label { display: none; }
 
   .hero {
